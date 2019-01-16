@@ -1,0 +1,37 @@
+<link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="shared/style.css" rel="stylesheet">
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="node_modules/angular/angular.min.js"></script>
+<!-- <script src="node_modules/jquery/dist/jquery.min.js"></script> -->
+<script src="node_modules/sweetalert/dist/sweetalert.min.js"></script>
+<script src="index.js"></script>
+        
+<div ng-app="myApp" ng-controller="myCtrl">
+    <div class="container" ng-if="firstDiv">
+        <div class="card card-container">
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="text" id="inputUsername" class="form-control" placeholder="Github username" ng-model="content.username">
+                <input type="text" id="inputToken" class="form-control" placeholder="Token" ng-model="content.token">
+                <button class="btn btn-lg btn-primary btn-block btn-signin" ng-click="gitHub(content)">Verify</button>
+            </form>
+        </div>
+    </div>
+    <div class="container" ng-if="show">
+        <div ng-repeat="data in data">
+            <div>URL:<a href="{{data}}">{{data}}</a></div>
+        </div>
+    </div>
+
+    <div class="container" ng-if="showFalse">
+        Ky user nuk ka asnje repositor.
+    </div>
+    <div class="container" ng-if="badCredentials">
+        Tokeni i futur nuk eshte i sakte.
+    </div>
+    <div class="container" ng-if="userNotFound">
+        Ky username nuk ekziston.
+    </div>
+</div>
